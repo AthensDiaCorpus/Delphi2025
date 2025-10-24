@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Area - Delphi Workshop 2025</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .secure-container {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .login-box {
+            background: white;
+            padding: 3rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .login-box h2 {
+            color: var(--primary-blue);
+            margin-bottom: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark-gray);
+            font-weight: 600;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--secondary-blue);
+        }
+        
+        .error-message {
+            color: #d32f2f;
+            margin-top: 1rem;
+            display: none;
+        }
+        
+        .private-content {
+            display: none;
+            padding: 4rem 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">Delphi Workshop 2025</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Back to Main Site</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="secure-container" id="loginForm">
+        <div class="login-box">
+            <h2>Private Area</h2>
+            <p style="margin-bottom: 2rem; color: var(--medium-gray);">This area is restricted to workshop organizers and invited participants.</p>
+            
+            <form id="passwordForm" onsubmit="checkPassword(event)">
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="submit-btn">Enter</button>
+            </form>
+            
+            <p class="error-message" id="errorMessage">Incorrect password. Please try again.</p>
+        </div>
+    </div>
+
+    <section class="private-content" id="privateContent">
+        <div class="container">
+            <h2>Workshop Organization Documents</h2>
+            
+            <div style="max-width: 800px; margin: 0 auto;">
+                <h3>Internal Documents</h3>
+                <ul>
+                    <li><a href="#">Budget Details (HFRI/ELIDEK)</a></li>
+                    <li><a href="#">Participant Contact List</a></li>
+                    <li><a href="#">Travel Arrangements</a></li>
+                    <li><a href="#">Accommodation Assignments</a></li>
+                    <li><a href="#">Meeting Minutes</a></li>
+                </ul>
+                
+                <h3>Team Communications</h3>
+                <ul>
+                    <li><a href="#">Email Templates</a></li>
+                    <li><a href="#">Speaker Correspondence</a></li>
+                    <li><a href="#">Venue Contracts</a></li>
+                    <li><a href="#">Catering Arrangements</a></li>
+                </ul>
+                
+                <h3>Academic Materials</h3>
+                <ul>
+                    <li><a href="#">Submitted Abstracts</a></li>
+                    <li><a href="#">Review Comments</a></li>
+                    <li><a href="#">Presentation Guidelines</a></li>
+                    <li><a href="#">Publication Timeline</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Delphi Workshop - Corpora and Diachrony</p>
+            <p>Funded by the Hellenic Foundation for Research and Innovation (HFRI)</p>
+        </div>
+    </footer>
+
+    <script>
+        function checkPassword(event) {
+            event.preventDefault();
+            const password = document.getElementById('password').value;
+            const correctPassword = 'delphi2025'; // Simple password for demonstration
+            
+            if (password === correctPassword) {
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('privateContent').style.display = 'block';
+            } else {
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('password').value = '';
+            }
+        }
+    </script>
+</body>
+</html>
